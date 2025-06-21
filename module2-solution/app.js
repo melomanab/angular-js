@@ -3,7 +3,10 @@
 
 angular.module('ShoppingListCheckOffApp', [])
 .controller('ToBuyController', ToBuyController)
+.controller('AlreadyBoughtController', AlreadyBoughtController)
 .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
+
+// -- Controllers
 
 // ToBuyController
 ToBuyController.$inject = ['ShoppingListCheckOffService'];
@@ -12,13 +15,21 @@ function ToBuyController(ShoppingListCheckOffService){
 
     // Populate itemsToBuy at loading
      ShoppingListCheckOffService.addItemToBuy('yaourt', '3 pots');
-     ShoppingListCheckOffService.addItemToBuy('cream', '1 pots');
+     ShoppingListCheckOffService.addItemToBuy('cream', '1 pot');
      ShoppingListCheckOffService.addItemToBuy('basil', '1 bouquet');
      ShoppingListCheckOffService.addItemToBuy('kombucha', '1 liter');
      ShoppingListCheckOffService.addItemToBuy('orange juice', '1 liter');
 
      toBuy.items = ShoppingListCheckOffService.getItemsToBuy();
 }
+
+// AlreadyBoughtController
+AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
+function AlreadyBoughtController(ShoppingListCheckOffService){
+    var alreadyBought = this;
+}
+
+// -- Services
 
 // ShoppingListCheckOffService
 function ShoppingListCheckOffService(){
