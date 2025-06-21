@@ -22,6 +22,11 @@ function ToBuyController(ShoppingListCheckOffService){
 
      // Expose toBuy.items list
      toBuy.items = ShoppingListCheckOffService.getItemsToBuy();
+
+     // Buy item
+     toBuy.bought = function(itemIndex){
+        ShoppingListCheckOffService.buyItem(itemIndex);
+     }
 }
 
 // AlreadyBoughtController
@@ -55,15 +60,36 @@ function ShoppingListCheckOffService(){
         itemsToBuy.push(item);
     }
 
+    service.removeItemToBuy = function(itemIndex){
+        itemsToBuy.splice(itemIndex, 1);
+    }
+
     service.getItemsToBuy = function(){
         return itemsToBuy;
     }
 
     // Manage bought items
-
     service.getItemsBought = function(){
         return itemsBought;
     }
+
+    // Add a new item to the itemsBought list
+    service.addItemToBought = function(itemName, itemQuantity){
+        var item = {
+            name : itemName,
+            quantity: itemQuantity
+        };
+        itemsBought.push(item);
+    }
+
+    // Buy an item
+    service.buyItem = function(itemIdx){
+        // add it to the list of bought items
+        this.addItemToBought(itemsToBuy[itemIdx].name, itemsToBuy[itemIdx].quantity);
+        // remove it from the list of to buy items
+        this.removeItemToBuy(itemIdx);
+    }
+
 }
 
 })();
