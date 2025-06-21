@@ -27,7 +27,16 @@ function ToBuyController(ShoppingListCheckOffService){
      toBuy.bought = function(itemIndex){
         ShoppingListCheckOffService.buyItem(itemIndex);
      }
-}
+
+     toBuy.isEmpty = function(){
+         if (toBuy.items.length === 0){
+             return true;
+          }
+          return false;
+     }
+
+} // end ToBuyController
+
 
 // AlreadyBoughtController
 AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
