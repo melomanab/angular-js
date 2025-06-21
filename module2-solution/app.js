@@ -20,6 +20,7 @@ function ToBuyController(ShoppingListCheckOffService){
      ShoppingListCheckOffService.addItemToBuy('kombucha', '1 liter');
      ShoppingListCheckOffService.addItemToBuy('orange juice', '1 liter');
 
+     // Expose toBuy.items list
      toBuy.items = ShoppingListCheckOffService.getItemsToBuy();
 }
 
@@ -27,6 +28,10 @@ function ToBuyController(ShoppingListCheckOffService){
 AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
 function AlreadyBoughtController(ShoppingListCheckOffService){
     var alreadyBought = this;
+
+    // Expose alreadyBought.items list
+    alreadyBought.items = ShoppingListCheckOffService.getItemsBought();
+
 }
 
 // -- Services
@@ -38,7 +43,10 @@ function ShoppingListCheckOffService(){
     // List of items to buy
     var itemsToBuy = [];
 
-    // Initialize
+    // List of the already bought items
+    var itemsBought = [];
+
+    // Add a new item to the itemsToBuy list
     service.addItemToBuy = function(itemName, itemQuantity){
         var item = {
             name : itemName,
@@ -49,6 +57,12 @@ function ShoppingListCheckOffService(){
 
     service.getItemsToBuy = function(){
         return itemsToBuy;
+    }
+
+    // Manage bought items
+
+    service.getItemsBought = function(){
+        return itemsBought;
     }
 }
 
