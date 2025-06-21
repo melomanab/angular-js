@@ -10,13 +10,11 @@ ToBuyController.$inject = ['ShoppingListCheckOffService'];
 function ToBuyController(ShoppingListCheckOffService){
     var toBuy = this;
 
-    // Initialize data on service
-    toBuy.initializeItemsToBuy =  function(){
-            ShoppingListCheckOffService.addItemToBuy('yaourt', '3');
-            ShoppingListCheckOffService.addItemToBuy('creme', '1');
-     }
+    // Populate itemsToBuy at loading
+     ShoppingListCheckOffService.addItemToBuy('yaourt', '3');
+     ShoppingListCheckOffService.addItemToBuy('creme', '1');
 
-    toBuy.items = ShoppingListCheckOffService.getItemsToBuy();
+     toBuy.items = ShoppingListCheckOffService.getItemsToBuy();
 }
 
 // ShoppingListCheckOffService
