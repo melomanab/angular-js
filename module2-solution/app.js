@@ -12,7 +12,9 @@ function ToBuyController(ShoppingListCheckOffService){
 
     // Populate itemsToBuy at loading
      ShoppingListCheckOffService.addItemToBuy('yaourt', '3');
-     ShoppingListCheckOffService.addItemToBuy('creme', '1');
+     ShoppingListCheckOffService.addItemToBuy('creme', '1 pot');
+     ShoppingListCheckOffService.addItemToBuy('basilic', '1 bouquet');
+     ShoppingListCheckOffService.addItemToBuy('kombucha', '1 litre');
 
      toBuy.items = ShoppingListCheckOffService.getItemsToBuy();
 }
