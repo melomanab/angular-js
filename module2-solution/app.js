@@ -46,6 +46,14 @@ function AlreadyBoughtController(ShoppingListCheckOffService){
     // Expose alreadyBought.items list
     alreadyBought.items = ShoppingListCheckOffService.getItemsBought();
 
+    // is the list of bought items sempty?
+     alreadyBought.isEmpty = function(){
+         if (alreadyBought.items.length === 0){
+             return true;
+          }
+          return false;
+     }
+
 }
 
 // -- Services
