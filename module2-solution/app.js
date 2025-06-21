@@ -11,10 +11,11 @@ function ToBuyController(ShoppingListCheckOffService){
     var toBuy = this;
 
     // Populate itemsToBuy at loading
-     ShoppingListCheckOffService.addItemToBuy('yaourt', '3');
-     ShoppingListCheckOffService.addItemToBuy('creme', '1 pot');
-     ShoppingListCheckOffService.addItemToBuy('basilic', '1 bouquet');
-     ShoppingListCheckOffService.addItemToBuy('kombucha', '1 litre');
+     ShoppingListCheckOffService.addItemToBuy('yaourt', '3 pots');
+     ShoppingListCheckOffService.addItemToBuy('cream', '1 pots');
+     ShoppingListCheckOffService.addItemToBuy('basil', '1 bouquet');
+     ShoppingListCheckOffService.addItemToBuy('kombucha', '1 liter');
+     ShoppingListCheckOffService.addItemToBuy('orange juice', '1 liter');
 
      toBuy.items = ShoppingListCheckOffService.getItemsToBuy();
 }
