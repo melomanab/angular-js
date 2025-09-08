@@ -25,15 +25,9 @@
 
    <!-- <found-items found-items="...." on-remove="...."></found-items> -->
 
-   <!--Display menu items without directive-->
+   <!--Display menu items with directive-->
    <div class="found-items">
-       <div class="item" ng-repeat="item in narrow.found">
-           <div class="item-info">
-               <div>{{ item.short_name }}</div>
-               <div>{{ item.name }}</div>
-               <div>{{ item.description }}</div>
-           </div>
-       </div>
+        <found-items items="narrow.found"></found-items>
    </div>
 
  </div>

@@ -4,6 +4,29 @@
 angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
+.directive('foundItems', FoundItemsDirective);
+
+
+// Directive function
+function FoundItemsDirective() {
+    var ddo= {
+        templateUrl: 'foundItems.html',
+        scope:{
+            items: '<',
+        },
+        controller: FoundItemsDirectiveController,
+        controllerAs: 'list',
+        bindToController: true
+    };
+
+    return ddo;
+}
+
+// Directive controller
+function FoundItemsDirectiveController() {
+    // TODO implement
+    var list = this;
+}
 
 
 // Service relying on http ajax client
@@ -79,7 +102,7 @@ function NarrowItDownController(MenuSearchService) {
 
             if(foundItems.length === 0){
                 console.log("No matched menu items found.");
-                narrow.message="Nothing found using '" + narrow.searchTerm + "'.Please try again." ;
+                narrow.message="Nothing found using '" + narrow.searchTerm + "'. Please try again." ;
             }
 
         }).catch(function(error) {
