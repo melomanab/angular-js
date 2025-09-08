@@ -54,7 +54,7 @@ function NarrowItDownController(MenuSearchService) {
 
     var narrow = this;
 
-    narrow.searchTerm = 'chicken';
+    narrow.searchTerm = '';
     narrow.found = [];
     narrow.message='';
 
