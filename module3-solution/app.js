@@ -13,6 +13,7 @@ function FoundItemsDirective() {
         templateUrl: 'foundItems.html',
         scope:{
             items: '<',
+            onRemove: '&'
         },
         controller: FoundItemsDirectiveController,
         controllerAs: 'list',
@@ -24,8 +25,13 @@ function FoundItemsDirective() {
 
 // Directive controller
 function FoundItemsDirectiveController() {
-    // TODO implement
     var list = this;
+
+    // When the remove method is called within the directive template
+    list.remove = function(index) {
+        // Call referenced method in parent controller
+        list.onRemove({index: index});
+    }
 }
 
 
@@ -109,7 +115,11 @@ function NarrowItDownController(MenuSearchService) {
             console.log("Error fetching menu items: ", error);
             narrow.message = "Error fetching menu items. Please try again";
         });
-    };
+    }
+
+    narrow.removeItem = function(index) {
+        narrow.found.splice(index, 1);
+    }
 
 
 }
