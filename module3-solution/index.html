@@ -19,6 +19,9 @@
       <button ng-click="narrow.narrowItDown(narrow.searchTerm);" class="btn btn-primary">Narrow It Down For Me!</button></br>
     </div>
 
+   <div class="error-message" ng-if="narrow.message">
+        {{ narrow.message }}
+   </div>
 
    <!-- <found-items found-items="...." on-remove="...."></found-items> -->
 

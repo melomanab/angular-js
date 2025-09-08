@@ -59,22 +59,32 @@ function NarrowItDownController(MenuSearchService) {
     narrow.message='';
 
     narrow.narrowItDown = function(searchTerm){
-        console.log("Call http service");
+
+        if(narrow.searchTerm === ''){
+            console.log("Seach term empty");
+            narrow.message= "Nothing found. Please type a search term and try again.";
+            return;
+        }
+
+        console.log("Calling the http service");
         var promise = MenuSearchService.getMatchedMenuItems(narrow.searchTerm);
 
         // Set the items once the menu items are load
         promise.then(function(foundItems) {
             console.log("Menu items retrieved");
+            // Reset the error message
+            narrow.message='';
+            // Update the list of menu items within the controller
             narrow.found = foundItems;
 
             if(foundItems.length === 0){
-                console.log('No matched menu items found.');
-                narrow.message='Nothing found';
+                console.log("No matched menu items found.");
+                narrow.message="Nothing found using '" + narrow.searchTerm + "'.Please try again." ;
             }
 
         }).catch(function(error) {
-            console.log('Error fetching menu items: ', error);
-            narrow.message = 'Error fetching menu items. Please try again';
+            console.log("Error fetching menu items: ", error);
+            narrow.message = "Error fetching menu items. Please try again";
         });
     };
 

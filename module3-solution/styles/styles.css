@@ -24,6 +24,10 @@ body {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
+.error-message {
+    margin-top: 100px;
+    font-style: italic;
+}
 .found-items {
     margin-top: 100px;
 }
