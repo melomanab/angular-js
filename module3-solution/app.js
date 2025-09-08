@@ -51,10 +51,6 @@ function MenuSearchService($http) {
             // Create an array of menu items (not exposed)
             var foundItems = [];
 
-            if (!searchTerm) {
-                return foundItems;
-            }
-
             // Process response and keep only item that match
             var menuData = response.data;
 
@@ -92,6 +88,7 @@ function NarrowItDownController(MenuSearchService) {
         if(narrow.searchTerm === ''){
             console.log("Seach term empty");
             narrow.message= "Nothing found. Please type a search term and try again.";
+            narrow.found = [];
             return;
         }
 
