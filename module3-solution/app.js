@@ -58,12 +58,13 @@ function NarrowItDownController(MenuSearchService) {
     narrow.found = [];
     narrow.message='';
 
-    narrow.narrowItDown = function(){
+    narrow.narrowItDown = function(searchTerm){
         console.log("Call http service");
         var promise = MenuSearchService.getMatchedMenuItems(narrow.searchTerm);
 
         // Set the items once the menu items are load
         promise.then(function(foundItems) {
+            console.log("Menu items retrieved");
             narrow.found = foundItems;
 
             if(foundItems.length === 0){
