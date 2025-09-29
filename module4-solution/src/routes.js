@@ -33,6 +33,11 @@
                     }]
                 }
             })
+        // Items view
+        .state('items', {
+            url: '/items',
+            templateUrl: 'src/menu/templates/items.template.html'
+        })
 
     }
 
