@@ -1,0 +1,10 @@
+<!-- List of menu categories -->
+<h2>This is the list of menu categories</h2>
+<ul>
+    <li ng-repeat="item in categoriesList.items">
+        {{item.name}} /
+        {{item.short_name}}
+    </li>
+</ul>
+
+<ui-view></ui-view>
