@@ -35,8 +35,15 @@
             })
         // Items view
         .state('items', {
-            url: '/items',
-            templateUrl: 'src/menu/templates/items.template.html'
+            url: '/items/{categoryShortName}',
+            templateUrl: 'src/menu/templates/items.template.html',
+            controller: 'MenuItemsController as itemsCtrl',
+            resolve: {
+                items: ['$stateParams', 'MenuDataService', function($stateParams, MenuDataService){
+                    console.log("--> Invoke MenuDataService.getAllItems()");
+                    return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
+                }]
+            }
         })
 
     }
