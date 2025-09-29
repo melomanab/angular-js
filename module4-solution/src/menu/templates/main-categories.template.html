@@ -1,14 +1,9 @@
 <!-- List of menu categories -->
 
-<a ui-sref="items">Click here</a> to see items
-<a ui-sref="public.menuitems({category: $ctrl.category.short_name})">
-
 <h2>This is the list of menu categories</h2>
 <ul>
     <li ng-repeat="item in categoriesList.items">
          {{ item.name }}
-        /
-        {{ item.short_name }}
         /
         <a ui-sref="items({categoryShortName: item.short_name})" >
             View Items ({{ item.short_name }})

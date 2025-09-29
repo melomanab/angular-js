@@ -1,5 +1,19 @@
-<h1>Items view</h1>
 
 
-{{ itemsCtrl.items | json }}
+<!-- Raw data -->
+<!-- {{ itemsCtrl.items | json }} -->
+
+<h2>Menu items in {{ itemsCtrl.items.category.name }} </h2>
+<p>{{ itemsCtrl.items.category.special_instructions }}</p>
+<ul>
+    <li ng-repeat="item in itemsCtrl.items.menu_items">
+        <div> {{ item.short_name }} / {{ item.name }}</div>
+        <div> {{ item.description }}  </div>
+        <div> Price: {{ item.price_large }} $ </div>
+        <br>
+    </li>
+</ul>
+
+
+
 

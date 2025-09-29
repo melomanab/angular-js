@@ -29,20 +29,14 @@ function MenuDataService($q, $http) {
 
     } // end of getAllCategories
 
-    service.getItemsForCategory = function (categoryShortName) {
-        console.log("--> getItemsForCategory(" + categoryShortName +")");
-        return $http(
-            {
-                method: 'GET',
-                url: ('https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/' + categoryShortName + '.json'),
-            }
-        ).then(
-            function(response) {
-                // Returns a promise
-                return response;
-            }
-        );
-    } // end of getAllCategories
+    service.getItemsForCategory = function(categoryShortName) {
+        return $http({
+            method: 'GET',
+            url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/' + categoryShortName + '.json'
+        }).then(function(response) {
+            return response.data;
+        });
+    };// end of getItemsForCategory
 
 }
 
