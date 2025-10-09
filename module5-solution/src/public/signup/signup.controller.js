@@ -5,8 +5,8 @@
         .controller('SignUpFormController', SignUpFormController);
 
 
-    SignUpFormController.$inject = ['MenuService']
-    function SignUpFormController(MenuService) {
+    SignUpFormController.$inject = ['MenuService', 'UserService'];
+    function SignUpFormController(MenuService, UserService) {
 
         var signUpCtrl = this;
 
@@ -18,7 +18,8 @@
         signUpCtrl.submit= function (){
             signUpCtrl.registered = true;
 
-            var shortName = signUpCtrl.user.dish.toUpperCase();
+            var shortName = null;
+            shortName = signUpCtrl.user.dish.toUpperCase();
             console.log(shortName);
 
             // Call the menu service to find the selected dish
@@ -35,9 +36,10 @@
                         console.log("selected item saved into user: " + signUpCtrl.user);
 
                         // Save favorite dish
-                        // var result = MenuService.saveUser(JSON.stringify(signUpCtrl.user))
-                        console.log('form sent:', signUpCtrl.user);
-                        console.log('form saved: ' + result);
+                        var result = UserService.saveUserInfo(JSON.stringify(signUpCtrl.user))
+                        console.log('User info saved:', signUpCtrl.user);
+
+                        // console.log(UserService.getUserInfo());
                     }
                 })
                 .catch(function (error) {
