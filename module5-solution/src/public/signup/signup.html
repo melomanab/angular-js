@@ -1,1 +1,73 @@
-<h1>Sign up</h1>
+<form name="signupForm" novalidate ng-controller="SignUpFormController as reg">
+    <h1>Sign Up for Newsletter</h1>
+
+    <label for="username">First Name</label><br>
+    <input type="text" name="username"
+           ng-model="reg.user.name"
+           placeholder="Username"
+           required
+           minlength="5"
+           ng-maxlength="15">
+    {{ reg.user.name }}
+    <span ng-if="(signupForm.username.$error.required || signupForm.username.$error.minlength)
+                  && signupForm.username.$touched">
+        Username is required</span>
+    <span ng-if="signupForm.username.$error.maxlength
+                  && signupForm.username.$touched">
+        Username must not be longer than 15 characters </span>
+    <br>
+
+    <label for="lastname">Last Name</label><br>
+    <input type="text" name="lastname"
+           ng-model="reg.user.lastname"
+           placeholder="Lastname"
+           required
+           minlength="5"
+           ng-maxlength="15">
+    {{ reg.user.lastname }}
+    <span ng-if="signupForm.lastname.$error.required && signupForm.lastname.$touched">
+        Lastname is required</span>
+    <br>
+
+    <label for="email">Email</label><br>
+    <input type="email" name="email"
+           ng-model="reg.user.email"
+           placeholder="E-mail"
+           required>
+    {{ reg.user.email }}
+    <span ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+        Must be a valid email adress: handle@domain format </span>
+    <br>
+
+    <label for="phone">Phone</label><br>
+    <input type="text" name="phone"
+           ng-model="reg.user.phone"
+           placeholder="Phone ###-##-##-## "
+           pattern="(\d{3})-(\d{2})-(\d{2})-(\d{2})">
+    {{ reg.user.phone }}
+    <span ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
+        Phone must be in the format ###-##-##-## </span>
+    <br>
+
+    <label for="dish">Favorite dish</label><br>
+    <input type="text" name="dish"
+           ng-model="reg.user.dish"
+           placeholder="Favorite dish"
+           required>
+    {{ reg.user.short_name }}
+    <span ng-if="signupForm.dish.$error.required && signupForm.lastname.$touched">
+        Dish is required</span>
+    <br>
+
+    <br>
+    <!-- <input type="submit" value="Sign up"> -->
+    <button
+            ng-disabled="signupForm.$invalid"
+            ng-click="reg.submit()"
+        >Submit</button>
+
+    <div id="registered" ng-if="reg.registered">
+        Your information has been saved.
+    </div>
+
+</form>
