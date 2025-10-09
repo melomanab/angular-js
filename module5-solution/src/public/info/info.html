@@ -7,15 +7,12 @@
     <p><strong>Last Name:</strong> {{infoCtrl.userInfo.lastname}}</p>
     <p><strong>Email:</strong> {{infoCtrl.userInfo.email}}</p>
     <p><strong>Phone number:</strong> {{infoCtrl.userInfo.phone}}</p>
-    <p><strong>Favorite dish:</strong>
-
-    <p><strong>{{infoCtrl.selectedItem.name}}</strong>
-    <p><strong>{{infoCtrl.selectedItem.description}}</strong>
+    <p><strong>Favorite dish:</strong>{{infoCtrl.userInfo.selectedItem.short_name}}</p>
 
     <div class="row">
         <div class="col-sm-5">
             <div class="menu-item-photo">
-                <img  width="250" height="150" ng-src="images/menu/{{infoCtrl.userInfo.selectedItem.category}}/{{infoCtrl.userInfo.selectedItem .short_name}}.jpg"
+                <img  width="250" height="150" ng-src="images/menu/{{infoCtrl.userInfo.selectedItem.category}}/{{infoCtrl.userInfo.selectedItem.short_name}}.jpg"
                       alt="{{infoCtrl.userInfo.selectedItem.name}}">
             </div>
         </div>
