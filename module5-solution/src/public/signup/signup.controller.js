@@ -35,8 +35,12 @@
                         signUpCtrl.user.selectedItem = selectedItem;
                         console.log("selected item saved into user: " + signUpCtrl.user);
 
+                        // If a dish exists, save category as a property of the selectedItem
+                        signUpCtrl.user.selectedItem.category = shortName[0];
+
                         // Save favorite dish
-                        var result = UserService.saveUserInfo(JSON.stringify(signUpCtrl.user))
+                        // var result = UserService.saveUserInfo(JSON.stringify(signUpCtrl.user))
+                        var result = UserService.saveUserInfo(signUpCtrl.user);
                         console.log('User info saved:', signUpCtrl.user);
 
                         // console.log(UserService.getUserInfo());

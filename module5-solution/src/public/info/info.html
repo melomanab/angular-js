@@ -2,7 +2,30 @@
 
 <div ng-if="infoCtrl.userInfo">
 
+    {{ infoCtrl.userInfo | json }}
+    <p><strong>First Name:</strong> {{infoCtrl.userInfo.name}}</p>
+    <p><strong>Last Name:</strong> {{infoCtrl.userInfo.lastname}}</p>
+    <p><strong>Email:</strong> {{infoCtrl.userInfo.email}}</p>
+    <p><strong>Phone number:</strong> {{infoCtrl.userInfo.phone}}</p>
+    <p><strong>Favorite dish:</strong>
+
+    <p><strong>{{infoCtrl.selectedItem.name}}</strong>
+    <p><strong>{{infoCtrl.selectedItem.description}}</strong>
+
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="menu-item-photo">
+                <img  width="250" height="150" ng-src="images/menu/{{infoCtrl.userInfo.selectedItem.category}}/{{infoCtrl.userInfo.selectedItem .short_name}}.jpg"
+                      alt="{{infoCtrl.userInfo.selectedItem.name}}">
+            </div>
+        </div>
+        <div class="menu-item-description col-sm-7">
+            <h3 class="menu-item-title">{{infoCtrl.userInfo.selectedItem.name}}</h3>
+            <p class="menu-item-details">{{infoCtrl.userInfo.selectedItem.description}}</p>
+        </div>
+    </div>
 </div>
+
 <div ng-if="!infoCtrl.userInfo">
     <p>Not Signed Up Yet. <a ui-sref="public.signup">Please, Sign up Now!</a></p>
 </div>
